@@ -1,8 +1,8 @@
 # Summary
 
 * [Acerca de](README.md)
-* [Intrudicción](introduction.md)
-* [Installations](installations.md)
+* [Introdicción](introduction.md)
+* [Instalaciones](installations.md)
 * [Angular kicks in](angular_kicks_in.md)
 * [Component](component.md)
 * [A new component](a_new_component.md)
