@@ -1,14 +1,14 @@
-# Class
+# Clases
 
-## Class Definition
+## Definiciones de Clases
 
-Class is a special programmatic structure. It is defined with **members** which can be  **properties** \(variables\) and **methods** \(functions\). Then instances of the class are created, usually by calling the `new` operator on the class: `let myInstance = new myClass();`. The instance created is an object on which you can call the class methods and get and set its properties' values. Multiple copies can be created from one class.
+Una Clase es una estructura de programación. Se define con **miembros** que pueden ser **propiedades** (variables) y **métodos** (funciones). Las instancias de la clase son creadas, usualmente llamando al operador `new` de la clase: `let myInstance = new myClass;`. La instancia es creada como un objeto en el cual puedes llamar métodos de la clase y definir los valores de sus propiedades. Múltiples copias pueden ser creadas de una clase.
 
-### In Angular...
+### En Angular...
 
-Angular takes care of creating instances of the classes you define - if they are recognized as Angular building blocks. The decorators make that connection with Angular.
+Angular se encarga de crear instancias de las clases que tu definas - si ellas son reconocidas como bloques de construcción de Angular. Los decoradores harán la decoración con Angular.
 
-Each time you use a component in a template, a new instance of it is created. For example, here three instances of the inputComponent class will be created:
+Cada vez que usas un componente en una plantilla, una nueva instancia de esta es creada. Por ejemplo, aquí tenemos tres instancias de la clase `inputComponent` que has creado:
 
 ```html
 template: `
@@ -18,11 +18,11 @@ template: `
 `
 ```
 
-Let's take a look at the class `inputComponent`.
+Veamos  la clase `inputComponent`.
 
-### implements OnInit
+### implementando OnInit
 
-First, you see something was added to the class declaration:
+Primero vereas que algo agregado en la declaración de clase:
 
 ```ts
 export class InputComponent implements OnInit {
@@ -30,38 +30,40 @@ export class InputComponent implements OnInit {
 }
 ```
 
-`OnInit` is an **interface** - a structure defined but not implemented as a class. It defines which properties and/or methods should exist on the class that implements it. In this case, `OnInit` is an interface for Angular Components which implement the method `ngOnInit`. This method is a **component life-cycle method**. Angular will call this method after the instance has been created.
+`OnInit` es una **interface** - una estructura definida pero no implementada como una clase. Esta define las propiedades y/o métodos que deberían existir en la clase que lo implementa. En este caso `OnInit` es una interface para los componentes d eAngular los cuales implementan el método `ngOnInit`. Este médito es un **compomente los métodos del ciclo de vida**. Angular llamará a este método después que una instancia ha sido creada.
 
-Angular-CLI adds this statement to remind us that it's best to initialize things on the component through the `ngOnInit` method. You can see it also added the method in the body of the class:
+Angular CLI agrega su propia sentencia para recordarnos que es mejor inicializar cosas en un componente a través del método `ngOnInit`.
+
+Puedes ver también el método agregado en el cuerpo de la clase:
 
 ```ts
 ngOnInit() {
 }
 ```
 
-You can use this method without explicitly indicating that the class implements the OnInit interface. But it's useful to use the implementation statement. To see how, delete the `ngOnInit` method. The IDE will tell you there's an error - you must implement `ngOnInit`. How does it know that? Because of `implementing OnInit`.
+Puedes usar este método sin indicar explícitamente que la clase implementa la interface `OnInit`.. Pero es útil usar la sentencia de implementación. Para ver como, elimina el método `ngOnInit`. El IDE te dirá que hay un error - debes implementar `ngOnInit`. ¿Cómo sabe esto? por el `implements OnInit`.
 
 ### constructor
 
-Another method we haven't seen in the `todo-root` component is the constructor. It is a method that is called by JavaScript when an instance of the class is created. Whatever is inside this method is used to create the instance. So it is called before `ngOnInit`.
+Otro método que no hemos vist en el componente `todo-root` es el constructor. Es un método llamado por JavaScript cuando una instancia de la clase es creada. Lo que sea que se encuentre en este método es usado para crear la instancia. Entonces es llamado antes de `ngOnInit`.
 
-> A strong feature in Angular that uses the constructor is dependency injection. We'll get to that later on, when we'll start using services.
+> Una poderosa caracterísitica en Angular es que el constructor usa inyección de dependencias. Veremos esto después, cuando comencemos a usar servicios.
 
-### Properties
+### Propiedades
 
-The property `title` we added is used to store a value, in our case of type string. Each instance of the class will have its own `title` variable, meaning you can change the value of `title` in one instance, but it will remain the same in the other instances.
+La propiedad `titl` fue agregada para guardar un valor, en nuestro caso, de tipo cadena. Cada instancia de la clase tendrá su propia variable `title`m lo que significa que puedes cambiar el valor `title` de una instancia, pero permanecerá igual en otras instancias.
 
-In TypeScript we must declare members of the class either in the class body outside any method, or pass it to the constructor - as we will see when we will use services.
+En TypeScript, debemos declarar miembros de la clase en la clase, en cualquier parte del cuerpo de la clase fuera de cualquier método o pasarlos en el constructor, como veremos cuando usemos los servicios.
 
-You can declare the property without initializing it:
+Puedes declara la propiedad sin inicializarla:
 
 ```ts
 title: string;
 ```
 
-Then you can assign a value at a later stage, for example in the constructor or in the ngOnInit method. When referencing a member of the class from within a class method you must prefix it with `this`. It's a special property that points at the current instance.
+Entonces puedes asignar un valor en una etapa posterior, por ejemplo en el constructor o en el método `ngOnInit`. Cuando referencias un miembro de la clase en algún lugar dentro de la clase, debes usar el prefijo con un `this`. Esta es una propiedad especial que apunta a la instancia actual.
 
-Try setting a different value for `title` from inside the constructor. See the result in the browser:
+Trata definir un valor diferente para `title` fuera del constructor. Verás el resultado en el navegador:
 
 ```ts
 title: string = 'my title';
@@ -71,11 +73,11 @@ constructor() {
 }
 ```
 
-Try changing the value of `title` inside the method `ngOnInit`. Which value will be displayed on the screen?
+Trata cambiando el valor de `title` dentro del método `ngOnInit`. ¿Qué valor será mostrado en la pantalla?
 
-### Methods
+### Métodos
 
-Let's add a method that changes the value of `title` according to the argument we will pass. The method will have one parameter of type `string`. Add inside the class body \(but not inside another method\):
+Vamos a agregar un método que cambie el valor de `title` de acuedo al argumento que le pasemos. El método tendrá un parametro de tipo `string`. Agrega dentro del cuerpo de la clase (pero no dentro de otro método):
 
 ```ts
 changeTitle(newTitle: string): void {
@@ -83,7 +85,7 @@ changeTitle(newTitle: string): void {
 }
 ```
 
-The method is called `changeTitle`. It doesn't have a return statement, so we noted that it "returns void". We can change that if we return an actual value. For example:
+Este método es llamad `changeTitle`. Y no tiene ninguna sentencia de retorno, entonces notamos que "retorna void" Nosotros podemos cambiar eso si queremos que retorne un valor actual. Por ejemplo:
 
 ```ts
 changeTitle(newTitle: string): string {
@@ -92,7 +94,7 @@ changeTitle(newTitle: string): string {
 }
 ```
 
-This method is not used anywhere. We can call it from another method or from the template \(which we will see in the following chapters\). Let's call it from the constructor.
+Este método no es usado en cualquier lugar. Nosotros podemos llamarlo desde otro método de nuestra plantilla (lo cual veremos en los siguientes capítulos). Vamos a llamarlo en el constructor.
 
 ```ts
 constructor() { 
@@ -100,11 +102,11 @@ constructor() {
 }
 ```
 
-![](/assets/lab.jpg) **Playground**: You can try calling the method with different arguments \(the string passed inside the brackets\) from ngOnInit. Try calling it before or after assigning a value directly to title. Try calling it a few times from the same method. See the result in the browser.
+![](/assets/lab.jpg) **Zona de Juego**: Puedes tratar de llamar al método con distintos argumentos (la cadena que pasamos dentro de las llaves) de `ngOnInit`. Trata de llamarla antes o después de asignar el valor directamente a `title`. Trata de llamarla varias veces desde el mismo método. Veras el resultado en el navegador.
 
-### Debugging Tip
+### Tip de depuración
 
-You can always use `console.log(someValue)` inside class methods. Then the value you passed as an argument will be printed in the browser's console. This way you can see the order of the execution of the methods and the value of the argument you pass \(if it's a variable\). For example:
+Siempre puedes usar `console.log(algunValor)` dentro de los métodos de clase. Entonces el valor que le pasas como argumento será impreso en la consola del navegador. de esta manera puedes saber el orden de ejecución de los métodos y el valor de los argumentos que pasas (si son una variable). Por ejemplo:
 
 ```ts
 constructor() { 
@@ -114,5 +116,5 @@ constructor() {
 }
 ```
 
-The browser's console is a part of its Dev Tools. See here different ways to open your browser's console: [https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers)
+La consola del navegador hace parte de las Opciones de Desarrollador. Mira las diferentes maneras de abrir la consola de tu navegador[https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers)
 
