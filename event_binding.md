@@ -1,12 +1,12 @@
-# Event binding
+# Enlace de eventos
 
-We want our application to react to the user's actions. We want to update the title of the todo item whenever the user changes it, or to add a new item when the user presses the Save button or the Enter key.
+Queremos que nuestra aplicación reacciones a las acciones de los usuarios. Queremos actualizar el título en cualquier momento que el usuario lo cambie, o que agregue un nuevo elemento cuando el usuario presiones el botón guardar o la tecla Enter.
 
-We still don't have a whole list to show, but at the moment we will use another way to test the action. We will change it to the right functionality later on.
+Todavía no tenemos una lista completa para mostrar, pero en el momento usaremos otra manera para probar la acción. Vamos a cambiar la funcionalidad después.
 
-## The Action
+## La acción
 
-First, let's implement `changeTitle`. You can replace `generateTitle` with this new method. It will receive the new title as its argument:
+Primer paso, vamos a implementar `changeTitle`. Puedes reemplazar `generateTitle` con este nuevo método. Este recibirá el nuevo título como primer argumento:
 
 ```ts
 changeTitle(newTitle: string): void {
@@ -14,11 +14,11 @@ changeTitle(newTitle: string): void {
 }
 ```
 
-## Binding to Events
+## Enlazando los eventos
 
-Just like binding to element properties, we can bind to events that are emitted by the elements. Again, Angular gives us an easy way to do this. **You just wrap the name of the event with parenthesis, and pass it the method that should be executed when the event is emitted**.
+Justo como hicimos con las propiedades de los elementos, podemos enlazar los eventos cuando son emitidos por los elementos. De nuevo, Angular nos da una manera fácil de hacer esto **Solamente debes envolver el nombre de los eventos con un paréntesis, y pasarselo al método que debería ser ejecutado cuando el evento es emitido**.
 
-Let's try a simple example, where the title is changed when the user clicks on the button. Notice the parenthesis around `click`. \(We also change the binding of the input's value back to `title`.\)
+Vamos a intentar un ejemplo simple, donde el título es cambiado cuando el usuario da click en el botón. Nota los paréntesis al rededor de `click`. (También  enlazaremos el valor del `input` de nuevo a `title`).
 
 ```html
 template: `
@@ -30,63 +30,64 @@ template: `
 `,
 ```
 
-The event is called `click` and not `onClick` - in Angular you remove the `on` prefix from the events in the elements.
+El evento llamado es `click` y no `onClick` - en Angular tu eliminas el prefijo `on` de los eventos en los elementos.
 
-Go to the browser and see the result - click on the Save button.
+Ve al navegador y ve el resultado -  da click en el botón `Save`
 
-## Event Data
+## Datos de los eventos
 
-We pass a static string to the method call: `Button Clicked!'` But we want to pass the value that the user typed in the input box!
+Pasamo una cadena estática a la llamada del método `Button Clicked!` ¡Pero podemos pasarle el valor que el usuario escribió en la caja de texto!
 
-In the next chapter we will learn how to use properties of one element in another element in the same template. Then we'll be able to complete the implementation of the click event of the Save button.  
-But now we'll bind a method to an event on the input element: when the user clicks Enter, the method `changeTitle` will be called.
+En el siguiente capítulo aprenderemos como usar las propiedades de un elemento en otro elemento en la misma plantilla. Entonces seremos capaces de completar la implementación del evento click en el botón `Save`.
 
-### 'keyup' event
+Pero por ahora vamos a enlazar un método al elemento `input`: Cuando el usuario presione Enter, el método `changeTitle` será llamado.
 
-When the user types, keyboard events are emitted. For example `keydown` and `keyup`. We will catch the `keyup` event \(when the pressed key is released\) and change the title:
+### Evento 'keyup' 
+
+Cuando el usuario escribe, los eventos del teclado son emitidos. Por ejemplo `keyDown` y `keyUp`. Nosotros atraparemos el evento `keyup` (cuando la tecla es solatada) y cambiaremos el título:
 
 ```html
 <input [value]="title" (keyup)="changeTitle('Button Clicked!')">
 ```
 
-This element becomes large, so to make it easier on the eye we will split it into two lines:
+Este elemento se vuelve grande, entonces para hacerlo mas fácil de leer vamos a partirlo en dos líneas:
 
 ```html
 <input [value]="title" 
        (keyup)="changeTitle('Button Clicked!')">
 ```
 
-Now when the user types in the input box, the title is changed to "Button Clicked!". But it's still a static string.
+Ahora cuando el usuario escriba en la caja de texto, el título será cambiado a `Button Clicked!`. Pero todavía será una cadena estática.
 
-### The $event object
+### El objeto $event 
 
-Now we just react when the `keyup` event occurs. Angular allows us to get the event object itself. It is passed to the event binding as `$event` - so we can use it when we call `changeTitle()`.
+Ahora nosotros solo reaccionamos cuando el evento `keyup` ocurre. Angular nos permite obtener el objeto del evento en si mismo. Es pasado al enlace del evento como `$event` - Así que podemos usarlo cuando llamamos a `changeTitle()`
 
-The event object emitted on `keyup` events has a reference to the element that emitted the event - the input element. The reference is kept in the event's property `target`. As we've seen before, the input element has a property `value` which holds the current string that's in the input box. We can pass `$event.target.value` to the method:
+El objeto `event` emitido por `keyup` tiene una referencia al elemento que emitió el evento - el elemento `input`. La referencia es guardada en la propiedad `target`. Como hemos visto antes, el elemento `input` tiene una propiedad `value` la cual tiene el valor actual de la cadena que está en la caja de texto. Podemos pasar `$event.target.value` al método:
 
 ```html
 <input [value]="title" 
        (keyup)="changeTitle($event.target.value)">
 ```
 
-Check it out in the browser. Now with every key stroke, you can see the title changes and reflects the input value.
+Verifica esto en el navegador. Ahora veremos que con cada tecla presionada, puedes ver que el título cambia y refleja el valor del `input`.
 
-### Pressing the Enter key
+### Presionando la tecla Enter
 
-You can limit the change to only a special key stroke, in our case it's the Enter key. Angular makes it really easy for us. The `keyup` event has properties which are more specific events. So just add the name of the key you'd like to listen to:
+Puedes limitar el cambio unicamente a algunas teclas, en nuestro caso, la tecla Enter. Angular lo hace bastante fácil para nosotros. El evento `keyup` tiene propiedades las cuales son eventos mas específicos. Así que solo agregamos el nombre de la tecla en la que queremos escuchar:
 
 ```html
 <input [value]="title" 
        (keyup.enter)="changeTitle($event.target.value)">
 ```
 
-Now the title will change only when the user hits the Enter key while typing in the input.
+Ahora el título cambia solamente cuando el usuario presiona Enter cuando está escribiendo en el input.
 
-### Tip - explore the $event
+### Consejo: Explora el objeto $event
 
-![](blob:https://www.gitbook.com/909c0ae3-0a60-4870-9a38-6b7588264104) **Playground: **You can change the changeTitle method to log the `$event` object in the console. This way you can explore it and see what properties it has.
+![](blob:https://www.gitbook.com/909c0ae3-0a60-4870-9a38-6b7588264104) **Zona de Juegos:** Puedes cambiar el método para registrar los cambios del objeto `$event` en la consola, de esta manera puedes explorar y ver que porpiedades tiene.
 
-Change the method `changeTitle`:
+Cambia el método `changeTitle`:
 
 ```ts
 changeTitle(event): void {
@@ -95,17 +96,15 @@ changeTitle(event): void {
 }
 ```
 
-  
 
-
-![](blob:https://www.gitbook.com/909c0ae3-0a60-4870-9a38-6b7588264104) **Playground: **Now change the argument you're passing in the template:
+![](blob:https://www.gitbook.com/909c0ae3-0a60-4870-9a38-6b7588264104) **Zona de Juegos:** Ahora cambia el argumento que estás enviando en la plantilla:
 
 ```html
 <input [value]="title" 
        (keyup.enter)="changeTitle($event)">
 ```
 
-Try it out!
+¡Pruébalo!
 
-Don't forget to change back the code before we go on \(!\).
+No olvides cambiarlo de nuevo para seguir (!).
 
