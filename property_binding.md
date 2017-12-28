@@ -1,10 +1,10 @@
-# Property binding
+# Enlace de propiedades
 
-We now have our input component, but it does not do much. We want to make it alive.
+Ahora tenemos nuestro componente `input`, pero no hace mucho. Queremos hacerlo mas vivo.
 
-Let's make the input control text reflect the value of the `title` property.
+Vamos a hacer que el título refleje el valor de la propiedad de `title`.
 
-This is how our input component looks now:
+Así es como nuestro componente se ve ahora:
 
 ```javascript
 import { Component, OnInit } from '@angular/core';
@@ -28,32 +28,33 @@ export class InputComponent implements OnInit {
 }
 ```
 
-We use interpolation to present to present the value of the `title` property: `{{ title }}`
+Usamos interpolación para presentar el valor presente de la propiedad `title`: `{{title}}`
 
-Angular then presents the value of `title` each time that our todo input component is shown.
+Angular entonces presenta el valor de `title` cada vez que nuestro componente `input` es mostrado.
 
-What if we want to show the title value inside the HTML input control itself?
+¿Qué si queremos mostrar el valor del título dentro del control de entrada en si mismo?
 
-Every `input` element has a property called `value`, which holds the string that is displayed inside the `input` box. In HTML we can pass a string directly to the element's `value` attribute:
+Cada elemento `input` tiene una propiedad llamada `value`, la cual tine una cadena que es mostrada dentro de la caja `input`. En HTML nosotros podemos pasar esta cadena directamente como el atributo `value`:
 
 ```html
 <input value="Hello World">
 ```
 
-But we loose the dynamic binding of between the properties in the controller to the template.
+Pero nosotros perdemos en enlace dinámico entre propiedades en el controlador y la plantilla.
 
-Angular 2 lets us bind properties to the template easily and conveniently. We saw that with interpolation. Now we'll see how to bind to an **element's property** (not to be confused with class properties...). **We surround the wanted property with square brackets and pass it the class member**:
+Angular nos deja enlazar propiedades a la plantilla fácil y convenientemente. Podemos ver eso con la interpolación. Ahora nosotros veremos como enlazarla a una **propiedad de un elemento** (No se confunda con propiedades de clases...) **Nosotros rodeamos la propiedad que queremos con corchetes y le pasamos el miembro de la clase**:
 
 ```html
 <input [value]="title">
 ```
-You can go on to the next chapter, but if you'd like to learn more about change detection - keep on reading.
 
-## Change Detection
+Puedes continuar en el siguiente capítulo, pero si tu quieres aprender mas sobre la detección de cambios, manténte leyendo. 
 
-Angular has a very efficient change detection mechanism. It looks for bindings in the components' templates, and then updates the value each time the bound expression is changed.
+## Detección de cambios
 
-To show this, let's change the value of the title after a few seconds and see what happens. Call the `setTimeout` function inside `ngOnInit`:
+Angular tiene un mecanismo bastante eficiente para la detección de cambios. El mira los enlaces en los componentes y las plantillas, luego actualiza el valor cada vez que la expresión es cambiada.
+
+Para mostrar esto, vamos a cambiar el valor de `title` después algunos segundos y ver loq ue pasa. Llama la fución `setTimeout` dentro de `ngOnInit`:
 
 ```ts
 ngOnInit() {
@@ -63,13 +64,15 @@ ngOnInit() {
 }
 ```
 
-`setTimeout` is a JavaScript function. Its first parameter is what we want to happen - a function of our choice. The second parameter is how much we want to delay it, in milliseconds. In this example, we pass an inline anonymous function which sets the value of `this.title`. For this we use one of JavaScript's new features (ES6) **arrow function**.
- 
-## Binding to Methods
-The expressions that we can bind to in the template are not limited to class properties. They can be a method call or almost any other valid JavaScript expression.
+`setTimeout` es una función de Javascript. Su primer parámetro es lo que queremos que pase, una función de nuestra eleción. El segundo parámetro es cuanto queremos demorarlo, en milisegundos. En este ejemplo, le pasamos una función anónima en linea, la cual define el valor de `this.title`. Para esto usamos una de las nuevas caracterísiticas de Javascript (ES6): **funciones flecha**.
 
-For example, let's bind the input value to a method call that returns a value.
-First, let's add the method `generateTitle()` anywhere inside the class, but not inside any of its methods. The best practice is to have our custom methods under the lifecycle methods (`ngOnInit` in this case).
+## Enlazar a métodos 
+
+Las expresiones que podemos enlazar en la plantilla no están limitadas a propiedades de clase. También pueden ser llamadas a métodos o casi cualquier otra expresión válida de Javascript.
+
+Por ejemplo, vamos a enlazar el valor del `input` a la llamada de un método que retorne un valor.
+
+Primero, agreguemos el método `generateTitle()` en cualquier lugar dentro de la case, pero no dentro de otros métodos. La mejor práctica es tener nuestro métodos personalizados debajo del ciclo de vida de los métodos (`ngOnInit` en este caso).
 
 ```ts
 generateTitle(): string {
@@ -78,37 +81,39 @@ generateTitle(): string {
 
 ```
 
-Replace one or both of the bindings of the title in the template with the method's call (don't forget the parenthesis!):
+Reemplaza uno o ambos enlaces del título en la plantilla con la llamada al método (no olvides los paréntesis):
+
 ```html                    
   <input [value]="generateTitle()">
   
   {{ generateTitle() }}
 ```
 
-So for now, we have our input control show the title of our todo in it. We now want to make the input change the value of the title back by entering value in it and pressing enter. How to do that? Let's go to the next chapter and find out...
+Así que por ahora, tenemos nuestro controlador que muestra el título de nuestra tarea en él. Nosotros queremos hacer que el valor ingresado cambie el título al presionar enter. ¿Cómo hacemos eso? Vamos al siguiente capítulo a averiguarlo...
 
-## Resources
+## Recursos
 
 [Angular Guide - Template Property Binding](https://angular.io/docs/ts/latest/guide/template-syntax.html#!#property-binding)
 
-### Note about accessing the DOM
+### Nota sobre acceder al DOM
 
-Using regular JavaScript, we can insert the value to the input via its properties. We'll fetch the element from the DOM and assign the value of the member `title` to the element's `value` property.
+Usando Javascript regular, podemos insertar el valor del input por sus propiedades. Vamos a obtener el elemento del DOM y asignar el valor del miembro `title` a la propiedad `value` del elemento.
 
 ```javascript
 let inputElement = document.getElementById('#my-input');
 inputElement.value = this.title;
 ```
 
-In JavaScript, we find the input element in the DOM by its id, and then set its `value` property to the value of the title variable. We need to add the id to the `input` element then:
+En Javascript, encontramos que el elemento en el DOM por su id, y luego definimos su propiedada `value` con el título de la variable. Necesitamos agregar el `id` al elemento. Entonces:
 
 ```html
 <input id="my-input">
 ```
 
-Excellent.
+Excelente.
 
-However, **this is highly discouraged in Angular 2. You should never access the DOM directly!**  
-That's because you can assign different renderers to Angular and run the application on different platforms. They may be mobile, desktop, or even a robot. And they will not have a `document` object from which you can manipulate the result!
+Sin embargo, **esto es altamente no recomendado en Angular. ¡Nunca deberías acceder al DOM directamente!**
+
+Por eso es que puedes asignar diferentes renderizadores a Angular y ejecutar la aplicación en diferentes plataformas. Pueden ser móviles o escritorio, o incluso rovots. ¡Y ellas no necesitan tener el objeto `document` con el cual manipular el resultado!
 
 

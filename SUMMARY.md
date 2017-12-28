@@ -7,7 +7,7 @@
 * [Componentes](component.md)
 * [Un nuevo componente](a_new_component.md)
 * [Clases](class.md)
-* [Property binding](property_binding.md)
+* [Enlace de Propiedades](property_binding.md)
 * [Event binding](event_binding.md)
 * [Element ref - \#](element_ref_-.md)
 * [The list](the_list.md)
