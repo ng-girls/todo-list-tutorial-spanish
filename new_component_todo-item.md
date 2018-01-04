@@ -1,16 +1,16 @@
-# New component todo-item
+# Nuevo componente todo-item
 
-We will create a new component which will be used for each todo item that is displayed on the list. It will be a simple component at first, but it will grow later on. What's important is that **it will get the todo item as an input from its parent component**. This way it can be a reusable component, and not rely directly on the application's data and state.
+Vamos a crear un nuevo componente el cual será usado para cada elemento que será mostrado en la lista. Será un simple componente, al comienzo, pero crecerá después. Lo que es importante es que **tomará el el elemento todo como un input para su componente padre**. De esta manera será un componente reusable, y no dependerá directamente de la información de la aplicación y el estado.
 
-Create a new component called `item`: 
+Create un nuevo componente llamado `item`:
 
 ```
 ng g c item -it
 ```
 
-You can see a new folder was created with the component files inside. 
+Puedes ver que una nueva carpeta ha sido creada con los archivos del componente dentro.
 
-Use the component in the template of `appComponent` - inside the `<li>` element:
+Usa el componente en la plantilla de `appComponent` - dentro del elemento `<li>`:
 
 ```html
 <ul>
@@ -20,25 +20,30 @@ Use the component in the template of `appComponent` - inside the `<li>` element:
 </ul>
 ```
 
-Check out the result in the browser. What do you see? Why?
+Verifica el resultado en el navegador. ¿Qué ves? ¿Por qué?
 
 ## @Input()
-We want to display the title of each item from within the `todo-item` component. We need to pass the title of the current item in the loop (or the whole item) to the `todo-item` component. 
 
-Again, Angular makes it really easy for us, by providing us the `Input` decorator.
+Queremos mostrar el título de cada elemento en el componente `todo-item`. Necesitamos pasar el título del elemento actual en el ciclo (o el elemento completo) al componente `todo-item`.
 
-Inside the newly generated `itemComponent` class (itemComponent) add the line:
+De nuevo, Angular lo hace bastante fácil por nosotros, al proveernos el decorador `Input`.
+
+Dentro de la clase generada `itemComponent` agrega la línea.
+
 ```ts
 @Input() itemTitle: string;
 ```
-It tells the component to expect an input of type string and to assign it to the class member called `itemTitle`. Make sure that `Input` is added to the import statement in the first line in the file. Now we can use it inside the `itemComponent` template:
+
+Esto le dice al componente que espere una entrada de tipo `string` y la asigne al miembro de la clase `itemtitle`. Asegúrte de que `Input` esté agregada en la sentencia `import` en la primera lína del archivo. ahora podemos usarlo dentro de la plantilla `itemComponent`:
+
 ```html
 {{ itemTitle }}
 ```
 
-You can add any other HTML elements you'd like here. 
+Puedes agregar otros elementos HTML que quieras aquí.
 
-Now we need to pass a string, which is the item's title, where we use the component. Go back to `appComponent` and  pass the item title to the `todo-item`:
+Ahora vamos a pasarle la cadena, la cual es el título del elemento, la cual usaremos en el componente. Va atrás a `appComponent` y pasa el elemento `title` a `todo-item`:
+
 ```html
 <ul>
   <li *ngFor="let item of todoList">
@@ -47,23 +52,28 @@ Now we need to pass a string, which is the item's title, where we use the compon
 </ul>
 ```
 
-The `itemTitle` here in square brackets is the same as declared as the component's `@Input`.
+El `itemTitle` que aquí está en corchetes, es el mismo declarado en el componente `@Input`.
 
-We use property binding on an element we created ourselves! And now we can actually see and understand that property binding binds to actual property of the component. 
+¡Nosotros usamos enlace de propiedades en un elementoq que creamos nosotros mismos! Y ahora podemos ver y entender en enlace de propiedades a la propiedad del componente.
 
-## Passing the whole item
-We will refactor our code a bit so we can easily implement more functionality in the `todo-item` component, for example editing and removing the item. Instead of passing just the title to the component, we will pass the whole item, and let the component extract the title where needed.
+## Pasando el elemento completo
 
-In `itemComponent` change the interpolation in the template to:
+Vamos a reconstruir nuestro código un poco nuestro código para que podamos implementar mas funcionalidad en el componente `todo-item`, por ejemplo, editando y eliminando el item. En lugar de pasarle solo el título del componente, vamos a pasarle el elemento completo, y vamos a extraer del componente el título cuando lo necesitemos.
+
+En `itemComponent` cambia la interpolación en la plantilla a :
+
 ```html
 {{ todoItem.title }}
 ```
-Rename the Input member and change its type: 
+
+Renombra el miembro `Input` y cambia su tipo:
+
 ```ts
 @Input() todoItem: any;
 ```
 
-Now pass the whole item to the renamed property in `appComponent` (remove the `.title`):
+Ahora pasa el objeto completo a la propiedad renombrada en `appComponent` (quita el `.title`):
+
 ```html
 <ul>
   <li *ngFor="let item of todoList">
@@ -72,4 +82,4 @@ Now pass the whole item to the renamed property in `appComponent` (remove the `.
 </ul>
 ```
 
-We now have a list of components, so each component received its data from the loop in the parent component. Now we'll see how this list can be dynamic.
+Ahora tenemos una lista de componentes, entonces cada componente recibe la información del ciclo en el componente padre. Ahora vamos a er como esta lista puede ser dinámica.
