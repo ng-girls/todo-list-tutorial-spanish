@@ -18,7 +18,7 @@
 * [Servicios](service.md)
 * [Agrega mas características al servicio](add_more_abilities_to_service.md)
 * [Local storage](local_storage.md)
-* [Remove item](remove_item.md)
+* [Eliminar elemento](remove_item.md)
 * [Adding a checkbox](adding_a_checkbox.md)
 * [Deploy to GithubPages](deploy_to_githubpages.md)
 * [Enriquecer el componente todo-item](enrich_the_todo-item_component.md)
