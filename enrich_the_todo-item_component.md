@@ -1,2 +1,2 @@
-# Enrich the todo-item component
+# Enriquecer el componente todo-item
 
