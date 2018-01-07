@@ -1,49 +1,53 @@
- # Deploy your App to Github Pages
-To deploy our changes to Github pages we will use the angular-cli-ghpages package
-https://github.com/angular-buch/angular-cli-ghpages 
+# Despliega tus aplicaciones a Github Pages
 
-* You need to have a Github user
-* You need to create a repostiroy for your project.
-* You need to commit all the changes you made in the project
-* You need to install angular-cli-ghpages
+Para desplegar nuestros cambios a Github pages, vamos a utilizar el paquete [angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages)
 
-## Creating a Github user
-If you already have a Github user you can skip this step.
-To Create a Github user go to Github: https://github.com/
-Fill the regetration form and make sure to validate your email address.
+* Necesitas tener un usuario Github
+* Necesitas crear un repositorio para tu proyecto.
+* Necesitas guardar todos los cambios que haces en el proyecto en git
+* Necesitas instalar `angular-cli-ghpages`  
 
-## Create your App repository
-After logging in to Github.
-Click on the `Start a project` button, and name the repository `ng-girls-todo` or any other name you like.
+## Crear un usuario Github
+> Si tu ya tienes un usuario Github puedes saltar este paso.
 
-## Connecting your repository
+Para crear un usuario en Github ve a:  https://github.com/
+Llena el formulario de registro y asegúrate de validar tu dirección de correo electrónico.
 
-Commit all your changes by runing this command in your project directory.
+## Crea un repositorio para tu proyecto.
+Después de acceder a Github.
+
+Da click en `Iniciar un proyecto` y nombra el repositorio `ng-girls-todo` o cualquier nombre que quieras.
+
+## Conectando tu repositorio
+
+Guarda todos los cambios en git ejecutando este comando en tu directorio de proyecto.
+
 ```
 git add -A && git commit -m "Your Message"
 ```
 
-Run the following command to connect your code to your repository.
-make sure to replace the {YOUR_USERNAME} and {YOUR_REPO} with your github username and repository name.
+Ejecuta el siguiente comando para conectar tu código al repositorio.
+Asegúrate de reemplazar {YOUR_USERNAME} y {YOUR_REPO} con tu nombre de usuario y nombre de repositorio.
+
 ```
 git remote add origin https://github.com/{YOUR_USERNAME}/{YOUR_REPO}.git
 git push -u origin master
 ```
 
-## Deploying to Github Pages
-First install angular-cli-ghpages.
+## Desplegar a Github pages
+Primero instala `angular-cli-ghpages`
 
 ```
 npm i -g angular-cli-ghpages
 ```
 
-Then simply run:
+Luego solo ejecuta:
 
 ```
 ng build --prod --base-href="/[your-repo-name]/"
 angular-cli-ghpages
 ```
 
-Your app will be available at https://[your-GH-username].github.io/[repo-name]
+Tu página debería estar disponible en https://{YOUR_USERNAME}.github.io/{YOUR_REPO}
 
-For more information see https://github.com/angular-buch/angular-cli-ghpages.
+Para mas información mira [https://github.com/angular-buch/angular-cli-ghpages.]https://github.com/angular-buch/angular-cli-ghpages.() 
