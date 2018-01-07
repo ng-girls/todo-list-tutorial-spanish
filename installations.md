@@ -92,9 +92,9 @@ Primero, creemos una carpeta para almacenar todos tus proyectos, por ejemplo _mi
 cd ruta-a-tu-carpeta/misProyectos
 ```
 
-Ahora creemos un nuevo proyecto llamado _lista-de-tareas_ dentro de la carpeta del proyectos, usando Angular-CLI, ejecutando el siguiente comando:
+Ahora creemos un nuevo proyecto llamado _todo-list_ dentro de la carpeta del proyectos, usando Angular-CLI, ejecutando el siguiente comando:
 ```
-ng new lista-de-tareas --prefix=todo
+ng new todo-list --prefix=todo
 ```
 Esto puede tomar un poco de tiempo, desde que muchos paquetes están siendo descargados e instalados.
 El prefijo 'todo' será usado en cada componente que creemos. El prefijo por defecto (si no utilizas la bandera `--prefix`) es 'app'.
