@@ -17,7 +17,7 @@
 * [Agregar estilos](adding_style.md)
 * [Servicios](service.md)
 * [Agrega mas características al servicio](add_more_abilities_to_service.md)
-* [Local storage](local_storage.md)
+* [Almacenamiento local](local_storage.md)
 * [Eliminar elemento](remove_item.md)
 * [Agregar un checkbox](adding_a_checkbox.md)
 * [Desplegar a GithubPages](deploy_to_githubpages.md)

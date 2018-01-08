@@ -2,7 +2,7 @@
 
 Démole una mirada al proyecto y cómo angular aparece en la imagen. Todos los archivos relevantes en esta etapa existen dentro de la carpeta `src`.
 
-Lee mas sobre los archivos autogenerados por Angular CLI en el [Apéndice 1: Generando un nuevo proyecto](https://ng-girls.gitbooks.io/todo-list-tutorial/generating_a_new_project.html).
+Lee mas sobre los archivos autogenerados por Angular CLI en el [Apéndice 1: Generando un nuevo proyecto](generating_a_new_project.html).
 
 Abre el archivo `index.html`. El contenido que es renderizado en la ventana del navegador tiene todo lo que ves dentro del elemento `<body>`. Todo lo que puedes ver ahora es otro elemento no HTML: `<todo-root>`. Este elemento es actualmente un componente de Angular, definido en el archivo `app/app.component.ts` con la clase llamada **AppComponent**. \(Vamos a revisar esto en el siguiente capítulo\).
 

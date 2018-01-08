@@ -112,7 +112,7 @@ La bandera `-o` es una abreviatura de `--open`, la cual abrirá tu navegador en 
 
 Deberías ver algo como esto:
 
-![image](https://github.com/bluebirrrrd/todo-list-tutorial/blob/master/assets/installation-result.png)
+![image](assets/installation-result.png)
 
 ### ¡Felicitaciones!
 

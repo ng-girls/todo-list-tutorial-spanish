@@ -150,7 +150,7 @@ Agrega el siguiente estilo a `input.component.css`:
 }
 ```
 
-Agrega el siguiente estilo a `input.component.css`:
+Agrega el siguiente estilo a `item.component.css`:
 
 ```css
 .todo-item {
