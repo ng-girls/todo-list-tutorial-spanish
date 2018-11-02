@@ -1,52 +1,50 @@
-# Remove item
+# Eliminar elemento
 
-The user should be able to remove any item, whether it's still active or completed. Revoving an item will be done by clicking a button, aptly named "remove". In this tutorial, we'll learn how to add this functionality to our project.
+El usuario debería ser capaz de eliminar cualquier elemento, así esté activo o completo. Eliminar un elemento puede ser hecho dand click en un botón llamado "eliminar". En este tutorial, vamos a aprender como añadir esta funcionalidad a nuestro proyecto.
 
-### File: item.component.ts
-First, we need to add the button to the item, so we'll work on the file *item.component.ts*.
+### Archivo: item.component.ts
+Primero, necesitamos añadir el botón al elemento, entonces vamos a trabajar en el archivo `item.component.ts`
 
-(a) Add a **(click)** event to the **remove** button in the item template:
-```
-<button (click)="removeItem()">
-  remove
-</button>
-```
+- Añade un evento **(click)** el botón `remove` en la plantilla:
+  ```
+  <button (click)="removeItem()">
+    remove
+  </button>
+  ```
+- Agrega un nuevo `Output` a la clase `ItemComponent`, el cual se emitirá  a `list-manager` cuando el usuario presione el botón `remove` en un evento específico:
+  ```
+  @Output() remove:EventEmitter<any> = new EventEmitter();
+  ```
+  Asegúrate de importar `EventEmitter` y `Output` en tu clase:
 
-(b) Add a new output to the ItemComponent class, which will be emitted to the list manager when a user pressed the remove button for a specific item:
-```
-@Output() remove:EventEmitter<any> = new EventEmitter();
-```
+  ```
+  import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+  ```
+- Agrega una función a la clase `ItemComponent` la cual emitirá e evento. Esta función será llamada cuando el usuario de click en el botón `remove`:
+  ```
+  removeItem() {
+    this.remove.emit(this.todoItem);
+  }
+  ```
 
-Make sure that we import both EventEmitter and Output in our class:
-```
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-```
-(c) Add a function to the ItemComponent class that will actually emit the event. This function will be called when the user clicks the **remove** button:
-```
-removeItem() {
-  this.remove.emit(this.item);
-}
-```
+### Archivo: list-manager.component.ts
 
-### File: list-manager.component.ts
+Ahora que cada elemento puede emitir su propia eliminación, vamos a asegurarnos de que list manager en realidad elimine el mismo elemento de la lista. Para eso, vamos a trabajar en el archivo `list-manager.component.ts`.
 
-Now that each todo item can emit its own removal, let's make sure that the list manager actually removes that same item from the list. For that, we'll work on the file *list-manager.component.ts*.
+- Necesitamos responder al evento **remove**, vamos a añadir en la plantilla, dentro de la etiqueta `<todo-item>`:
+  ```
+  (remove)="removeItem($event)"
+  ```
+- Vamos a necesitar una función llamada `removeItem()` en la clase `ListManagerComponent`:
+  ```
+  removeItem(item) {
+    this.todoList = this.todoListService.removeItem(item);
+  }
+  ```
 
-(a) We need to respond to **remove** event - let's add it to the template, inside the *<todo-item>* tag:
-```
-(remove)="removeItem($event)"
-```
+### Archivo: todo-list.service.ts
 
-(b) Now we just need to add the function *removeItem()* to the ListManagerComponent class:
-```
-removeItem(item) {
-  this.todoList = this.todoListService.removeItem(item);
-}
-```
-
-### File: todo-list.service.ts
-
-Removing the item is handled in the service - open *todo-list.service.ts* and add a function called removeItem() to the TodoListService class:
+Eliminar el elemento es manejado en el servicio, abre `todo-list.service.ts` y añade una función llamada `removeItem()` a la clase TodoListService:
 
 ```
 removeItem(item) {
@@ -54,13 +52,4 @@ removeItem(item) {
 }
 ```
 
-### File: todo-list-storage.service.ts
-
-Now let's make sure that the storage service removes the item from the storage. In file *todo-list-storage.service.ts*, add the destroy() function to the TodoListStorageService class:
-
-```
-destroy(item) {
-  this.todoList.splice(this.todoList.indexOf(item), 1);
-  return this.update();
-}
-```
+Esta función llama al método `destroy()` que ya creamos en todo-list-storage.service.ts anteriormente.

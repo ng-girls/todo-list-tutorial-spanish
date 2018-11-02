@@ -1,9 +1,9 @@
-# The list
+# La lista
 
-Now, you are going to add the todo-list itself to the component `app-root`. Open the file `src/app/app.component.ts`. Add the list of items inside the `AppComponent` class as an array of objects for each item. At this stage each item will contains only a title:
+Ahora vas a agregar la lista en sí al componente  `app-root`. Abre el archivo `src/app/app.component.ts`. Agrega la lista de elementos fuera de la clase `AppComponent` como un areglo de objetos por cada elemento. En este punto, cada elemento solo tendrá un título:
 
 ```js
-private todoList = [
+todoList = [
   {title: 'install NodeJS'},
   {title: 'install Angular CLI'},
   {title: 'create new app'},
@@ -13,11 +13,11 @@ private todoList = [
 ];
 ```
 
-> Putting info \(resources\) right inside your code is called hardcoding and considered an especially bad practice. Eventually we'll get the list from an outer resource, but even if not it's best to mock data in their own files. But let's advance step-by-step, so defining items this way is okay for now.
+> Colocar información (recursos) dentro del código es llamado `hardcoding` y se considera una mala práctica. Eventualmente, vamos a obtener esta lista de otro recurso, pero incluso esto no es mejor manera de almacenar la información en nuestros propios archivos. Pero vamos a avanzar paso por paso, así que definiremos elementos de esta manamera por ahora.
 
-Now, you have to tell the browser to display those items. For this, you will use the **Angular built-in directive, `*ngFor`**. It works as an enhanced loop in Java. `*` is a semantic though necessary notation which causes Angular to use the current element as template when rendering the list.
+Ahora debemos decirle al navegador que muestre estos elementos. Para esto, vas a usar la directiva incluida en Angular `*ngFor`. Esto funciona como un ciclo for de Java mejorado. `*` es una notación semántica necesaria la cual hace que Angular use el elemento actual como plantilla cuando renderiza la lista.
 
-Insert the loop right after `<todo-input></todo-input>`, this way:
+Enserta el ciclo justo después de `<todo-input></todo-input>`, de esta manera:
 
 ```html
 <todo-input></todo-input>
@@ -28,18 +28,18 @@ Insert the loop right after `<todo-input></todo-input>`, this way:
 </ul>
 ```
 
-This means "go over all items of todoList array defined below, and print out an unnumbered list which contains the items' titles". While looping over the `todoList`, each item is assigned to the variable `item`, and we can use this variable inside the `li` element and its children.
+Esto significa "recorre todos los elementos del arreglo todoList definido abajo e imprimer una lista sin numeración que contenga los títulos de los elementos". Mientras iteramos sobre `todoList`, cada elemento es asignado a la variable `item`, y podemos usar esta variable dentro del elemento `li` y sus hijos.
 
-### Angular directives
+### Directivas Angular 
 
-Directives are pieces of logic \(written as classes\) that can be attached to elements and components. They are used to change the display or the behavior of the element. Angular comes with some built-in directives.
+Las directivas son piezas de lógica (escritas como clases) que pueden ser adjuntas a elementos y componentes. Ellas se usan para cambiar la disposición o comportamiento de un elemento. Angular vienen con algunas directivas incluidas.
 
-As we saw, the `ngFor` directive modifies the template in run-time by repeating the element it's called on and its content. Another directive, for example, is `ngIf`, which receives a Boolean expression. Only if the expression is true Angular renders the element and its content. It also needs the `*` prefix because it uses the target element as a template, similarly to the `*ngFor` directive. For example:
+Como vimos, la directiva `ngFor` modifica la plantilla en tiempo de ejecución repitiendo el elemento que es llamado y su contenido. Otra directiva, por ejemplo es `ngIf`, la cual recive una expresión booleana. Solamente si la expresión es verdadera, se renderiza el elemento y su contenido. Esto también necesita el prefijo `*` porque usa el elemento apuntado como plantilla, similarmente a la directiva `*ngFor`. Por ejemplo:
 
 ```html
 <h1 *ngIf="userLoggedIn">Welcome!</h1>
 ```
 
-In this example, `userLoggedIn` should be a member of the component, and have a true or false value. If it's true, the element will be displayed. If false, the element will not exist on the DOM.
+En este ejemplo, `userLoggedIn` debería ser un miembro del componente, y tener un valor `true` o `false`. Si es `true`, el elemento será mostrado. Si es `false` el elemento no existirá en el DOM.
 
-There are other directives in Angular which are not structural \(and are used without the `*`\). For example ngStyle and ngClass, with which you can dynamically apply style and classes to the element.
+Hay otras directivas en Angular las cuales no son estructurales (y son usadas sin el `*`). Por ejemplo `ngStyle` y `ngClass`, las cuales pueden aplicar estilos y clases dinámicamente al elemento. 

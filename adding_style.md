@@ -1,12 +1,12 @@
-# Adding Style
+# Agregar estilos
 
-With Angular we can give style to components, in a way that will not affect the rest of the application. It's a good practice to encapsulate the component-related style this way.
+Con Angular podemos darle estilo a los componentes, en una maera que no afecte el resto de la aplicación. Es una buena práctica encapsular los estilos relativos al componente de esta manera.
 
-We can also state general style rules to be used across the application. This is good for creating the same look-and-feel for all our components. For example, we can decide what color palette will be used as the theme of our app. Then, if we'd like to change the colors or offer different themes, we can change it in just one place, instead of in each component.
+También podemos definir estilos generales que se usarán en toda la aplicación. Esto es bueno para crear el mismo `look-and-feel` para todos nuestros componentes. Por ejemplo, podemos decirid que palata de colores vamos a usar como tema para nuestra app. Entonces, si queremos cambiar los colores o ofrecer distintos temas, podemos cambiarlos en un solo lugar en vez de en cada componente.
 
-Angular gives us different style encapsulation methods, but we'll stick to the default.
+Angular nos da distintos métodos de encapsulado de estilos, pero vamos a quedarnos en lo genérico.
 
-Angular-CLI has generated a general stylesheet for us at `src/style.css`. Paste the following code into this file: 
+Angular CLO ha generado una hoja de estilos general por nosotros en `src/style.css`. Copia el siguiente código en ese archivo:
 
 ```css
 html, body, div, span,
@@ -51,7 +51,8 @@ ol, ul {
 
 ```
 
->How does the project know to look at this file? In Angular-CLI configuration file `.angular-cli.json` under `apps[0].styles` you can state the files for the build tool to take and add to the project. You can open the browser's dev tools and see the style inside the element: 
+> ¿Cómo el proyecto sabe como ver a este archivo? En el archivo de configuración `.angular-cli.json` bajo `apps[0].styles` puedes ver los archivos que la herramienta de construcción añade al proyecto. Puedes abrir las herramienta de desarrollo del navegador y ver los estilos dentro del elemento:
+
 ```html
 <html>
   ...
@@ -66,10 +67,10 @@ ol, ul {
 </html> 
 ```
 
+Ahora vamos a agregar estilos específicamente al compoentne `list-manager`.
 
-Now lets add style specifically to the list-manager component. 
+Abre el archivo `list-manager.component.css` y pega el siguiente estilo dentro:
 
-Open the file `list-manager.component.css` and paste the following style inside:
 ```css
 .todo-app {
   position: relative;
@@ -125,10 +126,12 @@ Open the file `list-manager.component.css` and paste the following style inside:
 }
 ```
 
-How does this stylesheet gets attached to the `list-manager` component? 
-Look at the file `list-manager.component.ts`. One of the properties in the object passed to the `@Component` decorator is `styleUrls`. It's a list of stylesheets to be used by Angular, which encapsulates the style within the component. 
+Como este estilos es adjunto al componente `list-manager`?
 
-Add the following style to `input.component.css`:
+Mira dentro del archivo `list-manager.component.ts`. Una de las propiedades pasadas al decorador `@Component` es `styleUrls`. Este es una lista de hojas de estilo que pueden ser usadas por Angular, el cual encapsula es estilo con el componente.
+
+Agrega el siguiente estilo a `input.component.css`:
+
 ```css
 .todo-input {
   padding: 4px 10px 4px;
@@ -147,7 +150,8 @@ Add the following style to `input.component.css`:
 }
 ```
 
-Add the following style to `item.component.css`:
+Agrega el siguiente estilo a `item.component.css`:
+
 ```css
 .todo-item {
   padding: 10px 0;
@@ -177,14 +181,17 @@ Add the following style to `item.component.css`:
 }
 
 ```
-Note: Don't forget to put the CSS-classes to the templace-code of your specified component like this:
+
+Nota: No olvides colocar  las clases CSS al código de la plantilla de tu componente especificado, mas o menos así:
+
 ```ts
  @Component({
     ...
     template: `
-          <button class="btn btnRed" (click)="removeItem()">
+          <button class="btn btn-red" (click)="removeItem()">
           `,
 ```
-You can change the style as you wish - the size of elements, the colors - however you'd like!
 
-Note: You can use SCSS files in the project, which is a nicer way to write style. It has great features that help the developer. SCSS files are compiled to css when the project is built. 
+Puedes cambiar el estilo como desees, el tamaño de los elementos, los colores, ¡lo que tu quieras!
+
+Nota: Tu puedes usar archivos SCSS en el proyecto, lo que es una buena manera de escribir estilos. Tiene grandes características que puede ayudar al desarrollador. Los archivos SCSS son compilados a CSS cuando el proyecto es construido.

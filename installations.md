@@ -1,31 +1,31 @@
-# Installation
+# Instalación
 
-Every developer needs a set of tools and libraries to start working. In our case, we'll install all the necessary tools, and once we have our Angular-CLI installed it will take care of additional libraries we'll need the for current and future projects.
+Cada desarrollador necesita un conjunto de herramientas y librerías para comenzar a trabajar. En nuestro caso, vamos a instalar todas las herramientas necesarias, y una vez tengamos nuestro Angular CLI instaladovamos a tomar en cuenta librerías adicionales que necesitaremos para futuros proyectos.
 
-## Tools
+## Herramientas
 
-### Browser
+### Navegador
 
-Our first tool is the **browser**. We'll use it to see the result of our work and debug it. We recommend [Google Chrome](https://www.google.com/chrome/browser/desktop/) - it has great developer tools. [Firefox](https://www.mozilla.org/en-US/firefox/new/) is also awesome. If you don't already have one of those, just click the relevant link and follow the instructions to download and install the browser of your choice.
+Nuestra primera herramienta va a ser el **navegador**. Veremos el resultado de nuestro trabajo y lo depuraremos. Nosotros recomendamos [Google Chrome](https://www.google.com/chrome/browser/desktop/) - tiene herramientas de desarrollo muy buenas. [Firefox](https://www.mozilla.org/en-US/firefox/new/) también es increible. Si no tienes alguno de estos, solo da click en el vínculo y sigue las instrucciones para descargar e instalar el navegador de tu elección.
 
 ### IDE
 
-Our next tool is the **IDE** -  integrated development environment. It's a software that helps you write the code. IDEs can do a lot of amazing things such as:
+Nuestra siguiente herramienta es el **IDE** (Ambiente Integrado de Desarrollo (en Inglés)). Es un software que nos ayuda a escribir código. los IDEs puede hacer muchas cosas maravillosas como:
 
-* paint the code so it's easier to identify expressions
-* suggest completions to what you type
-* helps navigate easily through the files in your project
-* and a lot more...
+* Pintar el código, así es fácil identificar expresiones.
+* Sugerir código así es más fácil identificar expresiones.
+* Ayudar a navegar fácilmente a través de archivos en tus proyectos.
+* Y mucho más ...
 
-JetBrains [Webstorm](https://www.jetbrains.com/webstorm/download/) is one of the strongest IDE's in the market. You get the first month for free, and a totally free license if you're a student.
+JetBrains [Webstorm](https://www.jetbrains.com/webstorm/download/) es uno de los IDEs mas fuertes en el mercado, Puedes conseguir el primer mes gratis y una licencia totalmente gratis si eres estudiante.
 
-Microsoft [Visual Studio Code](https://code.visualstudio.com/) is also a great choice that gains a lot of popularity lately. It is completely free for individuals.
+Microsoft [Visual Studio Code](https://code.visualstudio.com/) es también una gran elección que ha ganado popularidad últimamente. Es completamente gratis para individuos.
 
-Choose the IDE you'd like to work with and follow the installation instructions in its website.
+Escoge un IDE con el que te guste trabajar y sigue las instrucciones de instalación en su sitio web.
 
 **Visual Studio Code**
 
-If you choose to use VSCode, we recommend to install following Plugins for Angular:
+Si escoget VSCode, te recomendamos instalar los siguientes plugins para angular:
 
 - [Angular.ng-template](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
 - [natewallace.angular2-inline](https://marketplace.visualstudio.com/items?itemName=natewallace.angular2-inline)
@@ -34,36 +34,37 @@ If you choose to use VSCode, we recommend to install following Plugins for Angul
 
 ### Git
 
-Git is a tool that helps you manage versions of your code and work in collaboration with team members. There is a lot to know about it, but in this tutorial we will cover only basic usage.
+Git es una herramienta que te ayuda a manejar las versiones de tu código y trabajar en colaboración con miembros del equipo. Hay mucho que aprender sobre el, pero en este tutorial vamos a cubrir únicamente lo básico.
 
-You can download it and follow the installation instructions [here](https://git-scm.com/) .
-When asked if you'd like to install **git bash**, say yes.
+Puedes descargar y seguir las instrucciones de instalación [aquí](https://git-scm.com/).
+Cuando te pregunten si instalar **git bash**, di si.
 
 ### Github
+[Github](https://github.com/) es un sitio web de repositorios de código, el cual se integra con Git. Te permite publicar tu proyecto en la web, copiar otros proyectos de código abierto y colaborar. Para poder publicar tu proyecto, asegúrate de tener una cuenta en el sitio web de Github (Es gratuito, obviamente).
 
-[Github](https://github.com/) is a code repository website, which integrates with Git. It allows you to publish your project on the Web, copy other open source projects and collaborate. To be able to publish your project, make sure you create a user in Github's website (for free of course).
+### NodeJS y NPM
 
-### NodeJS and NPM
+**Por favor revisa la [documentación de Angular CLI](https://github.com/angular/angular-cli#prerequisites) para tener los prerequerisitos actualizados**
 
-**Please check the [Angular-CLI docs](https://github.com/angular/angular-cli#prerequisites) for the up-to-date prerequisites! **
+Otra gran herramienta que muchos desarrolladores web están usando en **NodeJS**. Una vez instalado, viene con una herramienta llamada **NPM** (Node Package Manager).
 
-Another tool which most web developers are using is **NodeJS**. Once installed, it comes with another tool called **NPM** (Node Package Manager).
+NodeJS te permite ejecutar código JavaScript en tu computador. Es usado para ejecutar servidores locales que sirven los archivos del proyecto en el navegador y simula un sitio web real ejecutándose.
 
-NodeJS lets you run JavaScript code on your computer. It is used to run a local server which serves the project files to the browser and simulates a real running website.
+NPM te permite fácilmente descargar e instalar diferentes librerías de internet y manejar sus versiones.
 
-NPM allows you to easily download and install different libraries from the internet and  manage their versions.
+Descarga NodeJS [aquí](https://nodejs.org/en/).
 
-Download NodeJS [here](https://nodejs.org/en/).
+Si tu ya tienes NodeJS instalado, asegúrate que tengas la versión 6.9.0 o superior ejecutando el siguiente comando en tu terminal:
 
-If you already have NodeJS installed, make sure you check that the version is 6.9.0 or above by running this in your command line / terminal:   
 ```
 node -v
 ```
-\('-v' stands for 'version'.\)  
+\('-v' significa 'version'.\)  
 
-If it's lower than required, download the new version from the website and install it.
+Si la versión es inferior a la requerida, descarga la nueva versión del sitio web para instalarla.
 
-Once installed, you should also have NPM installed. Check its version by running:  
+Una vez instalada, puedes verificar que NPM está instalado. Verifica esto escribiendo:
+
 ```
 npm -v
 ```
@@ -71,52 +72,54 @@ npm -v
 
 ### Angular-CLI
 
-[Angular-CLI](https://github.com/angular/angular-cli) is a powerful tool that simplifies a lot of the development process. It also installs libraries you'll use in your current and future projects. Install it by running:
+[Angular-CLI](https://github.com/angular/angular-cli) es una herramienta poderosa que simplifica mucho el proceso de desarrollo. También instala librerías que tu usarás en tu proyecto actual y también en futuros. Instalalo ejecutando:
+
 ```
 npm i -g @angular/cli
 ```
 
-This command runs the NPM we recently installed here - it knows where to find the package (angular-cli) you're looking for by the name of the package you provide.
-the 'i' parameter, is a short form of 'install'.
-the '-g' parameter, stands for the word 'global' - we'd like to have this tool globally installed on the computer, so that we could use it from any folder to create any future projects.
+Este comando ejecuta NOM que recientemente instalamos aquí - el sabe encontrar el paquete (angular-cli) que estás buscando por el nombre que tu proveas.
+El parámetro 'i' es una abreviación para 'install'
+El parámetro '-g', significa 'global' - nos gustaría tener esta herramienta instalada globalmente en el computador, así que la podremos usar desde cualquier carpeta para crear futuros proyectos.
 
-Read more about Angular-CLI in the following section.
+Lee mas sobre Angular-CLI en la siguiente sección.
 
-### Creating a Project
+### Crear un proyecto
 
-First, create a folder to store all your projects, for example _myProjects_, and then go into the folder, using a terminal (command line window):
+Primero, creemos una carpeta para almacenar todos tus proyectos, por ejemplo _misProyectos_, y luego ve a esa carpeta usando una terminal (ventana de línea de comandos):
+
 ```
-cd the-path-to-your-folder/myProjects
+cd ruta-a-tu-carpeta/misProyectos
 ```
 
-Now, create a new project, called _todo-list_ inside the projects folder, using Angular-CLI, by running the following command:
+Ahora creemos un nuevo proyecto llamado _todo-list_ dentro de la carpeta del proyectos, usando Angular-CLI, ejecutando el siguiente comando:
 ```
 ng new todo-list --prefix=todo
 ```
-This can take a while, since many packages are being downloaded and installed.
-The prefix 'todo' will be used in every component we create. The default prefix (if you don't use the flag `--prefix`) is 'app'.
+Esto puede tomar un poco de tiempo, desde que muchos paquetes están siendo descargados e instalados.
+El prefijo 'todo' será usado en cada componente que creemos. El prefijo por defecto (si no utilizas la bandera `--prefix`) es 'app'.
 
+Ahora entremos a la nueva carpeta que Angular-CLI ha creado para este proyecto
 
-Now enter the new folder that Angular-CLI created for this project
 ```
 cd todo-list
 ```
-Once inside the folder of the application, run the application by using the following command:
+Una vez dentro de esta carpeta de aplicacieon, ejecuta la aplicación usando los siguientes comandos:
 ```
 ng serve -o
 ```
-The flag `-o` is a short for `--open`, which will open your browser in the right URL: `localhost:4200`
+La bandera `-o` es una abreviatura de `--open`, la cual abrirá tu navegador en la URL correcta: [`localhost:4200`](http://localhost:4200)
 
-You should see the title **Todo works!**
+Deberías ver algo como esto:
 
+![image](assets/installation-result.png)
 
+### ¡Felicitaciones!
 
-### Congratulations!
+¡Tienes una aplicación de Angular! **Siempre que tengas una aplicación ejecutándose, deberías tener el terminal donde la abriste abierto**. Cualquier cambio que realices en el proyecto, será reflejado inmediatamente en el navegador web.
 
-You have a running Angular application! **As long as you're working on the application you should keep the terminal where you run it open.** Any change you make in the project code will be reflected immediately in the web browser. 
-You can open another terminal to perform tasks in parallel.
+Puedes abrir otra terminal para ejecutar tareas en paralelo.
 
-To stop the app from running, press `Ctrl+C` in the terminal, or close the terminal.
+Puedes terminar la aplicación, presionando `Ctrl+C` en el terminal, o cerrar el terminal.
 
-Now we're ready to start developing!
-
+¡Ahora estamos listos para comenzar a desarrollar!.

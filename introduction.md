@@ -1,22 +1,22 @@
-# Introduction
+# Introducción
 
-Angular is much more than a framework. It's a whole platform for creating applications that can run not only on a browser, but anywhere. It gives you tools to advanced capabilities, such as easily creating dynamic components, routes definitions and much more.
+Angular es mucho mas que un framework. Es una plataforma completa para crear aplicaciones que pueden ejecutarse no solo en un navegador sino donde sea. Te da herramientas para lograr características avanzadas, como crear fácilmente componentes dinámicos, definición de rutas y mucho mas.
 
 ![](/assets/angular.png)
 
-In this tutorial you'll learn how to develop a basic application using Angular. You will get to know the building blocks to have a working application: modules, components and services. Angular-CLI will help you in the process in many ways and will simplify the development process.
+En este tutorial vas a aprender como desarrollar una aplicación básica usando Angular. Tu vas a conocer los bloques de contrucción que tiene una aplicación funcional: módulos, componentes y servicios. Angular-CLI te ayudará en el proceso y en muchas maneras simplificará el proceso de desarrollo.
 
+Al final de este tutorial, tendrás una Lista de Tareas, que mostrará una lista de elementos y te dejará agregar o eliminar elementos. También serás capás de cambiar el título de elementos existentes.
 By the end of this tutorial, you'll have a ready todo-list application, that shows a list of items and lets you add or delete items. You will even be able to change the title of an existing item.
 
-The list is saved in the browser's local storage. All the changes will remain even when you refresh the browser or even turn off your computer \(as long as you use the same browser on the same computer and not in private mode\).
+La lista es guardada en el almacenamiento local del navegador. Todos los cambios permanecerán incluso si refrescas el navegador, y hasta si apagas el computador \(siempre y cuando uses el mismo navegador y no estés en modo privado\).
 
-You will even publish the application on the Web, so that other could use it!
+También publicarás la aplicación en la Web, ¡así podrás usarla!
 
-After completing this tutorial, we encourage you to continue developing the application and adding your personal touch.
+Después de completar este tutorial, te animamos a que continúes desarrollando la aplicación y agregándole tu toque personal.
 
-This tutorial is meant for beginners. As such it tries to address good practices, but due to its simplicity, it's not always possible.
+Este tutorial está diseñado para principiantes. Apuntar a las buenas prácticas y a la simplicidad no siempr es posible.
 
-We really hope this tutorial will help you in your first stages of Web development using Angular!
+¡Realmente esperamos que este tutorial te ayude en tus primeras etapas del desarrollo web con Angular!
 
-Enjoy!
-
+¡A disfrutar!

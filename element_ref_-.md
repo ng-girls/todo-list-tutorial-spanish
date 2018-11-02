@@ -1,6 +1,6 @@
-# Element ref
+# Elemento ref
 
-In the last chapter, we ended with our input component that can reflect and change the value of title of our todo item. `input.component.ts` should look like this:
+En el capítulo pasado, terminamos con nuestor componente `input` el cual puede reflejar el cambio del valor del título en nuestro elemento. `input.component.ts` debería verse así:
 
 ```javascript
 import { Component, OnInit } from '@angular/core';
@@ -31,11 +31,11 @@ export class InputComponent implements OnInit {
 }
 ```
 
-Now, we want to take the value of the input (that the user typed) and change the title when we press the Save button.
+Ahora queremos tomar el valor del `input` (el que el usuario escribió) y cambiar el título cuando presionamos el botón `Save`.
 
-We already know how to create a button and react to click on it. We now need to pass to the method some data from a different element. We want to use the input's value from inside the button element.
+Nosotros ya sabemos como crear un botón y como reaccionar en un click. Ahora necesitamos pasar al método información de un elemento diferente. Queremos usar el valor del   `input` dentro del elemento `button`.
 
-Angular helps us do exactly that. **We can get a reference to the element we want into a variable with the name we choose, **for example** `inputElement`, using a simple syntax - a hash.** Add `#inputElement` to the `input` element, and use it in the click event of the button:
+Angular nos ayuda a hacer eso. **Podemos obtener la referencia al objeto que queremos en una variable con el nombre que escojemos, por ejemplo** `inputElement`, usando una notación simple - un numeral. Agrega `#inputElement` al elemento `input`, y luego usalo para pasarlo en el evendo click del botón:
 
 ```html
 <input [value]="title"              
@@ -47,18 +47,18 @@ Angular helps us do exactly that. **We can get a reference to the element we wan
 </button>
 ```
 
-Now we can use the value that the user entered in the input element in the method called when clicking the Save button!
+Ahora podemos usar el valor que el usuario ingresó en el elemento `input` en el llamado del método cuando se hace click en el botón `Save`
 
-What is that `#` we see ?
+¿Qué es el `#` que vemos?
 
-Angular lets us define a new local variable named `inputElement` \(or any name you choose\) that holds a reference to the element we defined it on, and then use it any way we want. In our case, to access the value property of the input.
+Angular nos deja definir una nueva variable local llamada `inputElement` (o cualquier nombre que escojas), la cual mantiene una referencia al elemento en el que la definimos, y luego la usa en cualquier manera que nosotros queramos. En nuestro caso, para acceder al valor de la propiedad del `input`.
 
-Instead of hunting down the elements via DOM query \(which is bad practice as we discussed\), we now can put element references in the template and access each element we want declaratively.
+En lugar de cazar los elementos haciendo una consulta al DOM (lo cual es una mala práctica como discutimos), ahora podemos colocar referencias en una plantilla y acceder a cada elemento que queremos declarativamente.
+Lo siguiente será construir una lista de elementos para hacer.
 
-Next on, we'll build the list of todo items.
+### Consejo - explora el elemento referencia
 
-### Tip - explore the element reference
-Just like we did in the previous chapter, when we logged $event, you can do the same with `#inputElement`. Change the method `changeTitle` so it will receive the whole element reference and log it to the console:
+Al igual que hicimos en el capítulo previo, cuando nosotros registramos $event, puedes hacer lo mismo con `#inputElement`. Cambia el método `changeTitle` así puedes recibir el elemento completo e imprimirlo en la consola:
 
 ```html
 <input [value]="title"              
@@ -77,7 +77,7 @@ changeTitle(inputElementReference): void {
 
 ```
 
-## Resources
+## Recursos
 
 [Angular Template Reference Variables](https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ref-vars)
 

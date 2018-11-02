@@ -1,34 +1,35 @@
-# A new component
+# Un nuevo componente
 
-In this chapter we will write a whole new component. It will allow us adding an item to the todo list. It will be composed of the HTML elements `input` and `button`.
+En este capítulo vamos a escribir un nuevo componente completo. Esto nos va a permitir agregar nuevos elementos  ala lista de tareas. Estará compuesto de elementos HTML `input` y `button`.
 
-We'll use Angular-CLI to generate all the needed files and boilerplate for us. In the terminal run:
+Nosotros usaremos Angular CLI para generar todos los archivos necesarios y que comience por nosotros. En un terminal ejecuta:
 
 ```cmd
 ng g c input -it
 ```
 
-As we've seen before, `ng` is the command for using Angular-CLI. `g` is a shorthand for `generate`. `c` is a shorthand for `component`. `input` is the name we give to the component. `-it` is shorthand for `--inline-template`.
+> Nota que tu necesitas abrir un nuevo terminal (ventana o pestaña) para poder ejecutar un nuevo comando. Inser el comando en la terminalsuperior donde está ejecutando el comando `ng serve` no tendrá ningún efecto.
 
-So the long version of the command is:
+Como podemos ver anteriormente, `ng` es el comando para usar Angular CLI `g` es una abreviatura para `generate`. `c` es una abreviatura para `component`. `input` es el nombre que le daremos al componente, `it` es una abreviatura para `inline-template`.
+
+Así que la versión de larga del comando es:
 
 ```
 ng generate component input --inline-template
 ```
 
-> You can avoid using `-it` each time you generate a components by setting inline templates as a default in the configuration file `angular-cli.json`.
+> Puedes evitaru usar el `it` cada vez que generes un componente definiendo plantillas en linea como por defecto en la configuración del archivo `angular-cli.json`.
+> No te preocupes sobre el nombre del componente `input`. No reemplazará el elemento HTML `input`. Eso es gracias al prefijo que Angular CLi le da a nuestros componentes. El prefijo por defecto es `app`, así que el selector del componente será `app-input`. Si tu has creado el proyecto con un prefijo de tu preferencia o has cambiado en el archivo `angular-cli.json`, este será el prefijo del selector. Cuando nosotros creamos el proyecto, definimos el prefijo a "todo", así que el selector será `todo-input`. 
 
-> Don't worry about the component name `input`. It will not replace HTMLs `input` element. That's thanks to the prefix that Angular-CLI gives to our components. The default prefix is `app`, so the component selector would be `app-input`. If you've created the project stating the prefix of your choice, or changed it afterwards in the file `angular-cli.json`, this will be the prefix of the selector. When we created the project we set the prefix to "todo", so the selector should be `todo-input`.
+Vamos a mirar lo que Angular CLI ha creado por nosotros.
 
-Let's take a look of what Angular-CLI created for us.
+Creó una carpeta llamada `src/app/input`. Aquí hay tres archivos:
 
-It created a new folder called `src/app/input`. There are three files there:
+* `input.component.css` - Aquí es donde estilizamos el componente específico que colocaremos.
+* `input.component.spec.ts` - Este e sun archivo para probar el componente. Nosotros no trataremos esto en este tutorial.
+* `input.component.ts` - Este es el archivo del componente el cual definiremos su plantilla y lógica.
 
-* `input.component.css` - this is where the style that's specific to the component will be placed.
-* `input.component.spec.ts` - this is a file for testing the component. We will not deal with it on this tutorial.
-* `input.component.ts` - this is the component file where we will define its template and logic.
-
-Open the file `input.component.ts`. You can see that Angular-CLI has generated a default template for us:
+Abre el arhcivo `input.component.ts`. Puedes ver que Angular CLI ha generado una plantilla por defecto para nosotros:
 
 ```js
 template: `
@@ -38,15 +39,15 @@ template: `
   `,
 ```
 
-It has also added the selector according to the name we gave to the component, with the prefix we configured:
+También ha agregado el selector de acuerdo al nombre de nuestro componente, con el prefijo que configuramos:
 
 ```js
 selector: 'todo-input',
 ```
 
-We can use this component as is and see the result!
+Podemos usar este componente como es y ver el resultado:
 
-Open the root component file, `app.component.ts` and add the todo-input tag anywhere inside the template:
+Abramos el componente raiz `app.component.ts` y agreguemos la etiqueta `todo-input` en cualquier lugar dentro de la plantilla:
 
 ```js
 template: `
@@ -58,9 +59,9 @@ template: `
 `,
 ```
 
-Check what's new in the browser!
+¡Verifiquemos que hay de nuevo en el navegador!
 
-We will add some content to our new component. First, add a `title` member which we will use as the todo item title:
+Volvamos a nuestro `input.component.ts` y agreguemos algún contenido. Primero, agrega un miembro `title` el cual nos dirá cual es el título del elemento para agregar:
 
 ```ts
 export class InputComponent implements OnInit {
@@ -68,11 +69,11 @@ export class InputComponent implements OnInit {
   ...
 ```
 
-It will not interfere with the `todo-root` component's `title`, since each component's content is encapsulated within it.
+Esto no interferirá con el `title` del componente `todo-root`, desde que cada componente está encapsulado.
 
-You can give an initial string to the title, like we did in the `todo-root` component.
+Puedes darle una cadena inicial al títutlo, como lo hicimos con el componente `todo-root`.
 
-Next, add an input element, a button, and a binding to the title, to the template:
+A continuación, agrega un elemento, un botón y una unión del título a la plantilla: 
 
 ```html
 <input>
@@ -80,7 +81,7 @@ Next, add an input element, a button, and a binding to the title, to the templat
 <p>The title is: {{ title }}</p>
 ```
 
-Check out the result!
+¡Verifica el resultado!
 
-This component doesn't do much at this point. In the next chapters we will learn about the component class, and then implement the component's logic.
+Este componente no hace mucho en este punto. En los siguientes capítulos aprenderemos sobre la clase componente, y luego implementaremos la lógica del componente.
 
