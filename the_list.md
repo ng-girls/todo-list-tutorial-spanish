@@ -1,6 +1,6 @@
 # La lista
 
-Ahora vas a agregar la lista en sí al componente  `app-root`. Abre el archivo `src/app/app.component.ts`. Agrega la lista de elementos fuera de la clase `AppComponent` como un areglo de objetos por cada elemento. En este punto, cada elemento solo tendrá un título:
+Ahora vas a agregar la lista en sí al componente  `app-root`. Abre el archivo `src/app/app.component.ts`. Agrega la lista de elementos dentro de la clase `AppComponent` como un areglo de objetos por cada elemento. En este punto, cada elemento solo tendrá un título:
 
 ```js
 todoList = [
