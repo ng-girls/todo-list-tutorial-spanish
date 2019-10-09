@@ -8,7 +8,7 @@ Este tutorial es de código abierto y está escrito por la comunidad. Por favor 
 
 El tutorial es usado en los talleres de [ngGirls](http://ng-girls.org). Eres bienvenido a usar este taller en tu propio taller y nos encantaría oír sobre esto. Escríbenos a [info@ng-girls.org](/mailto:info@ng-girls.org).
 
-![](/assets/ngGirls banner transparent.png)
+![](/assets/ngGirls-banner-transparent.png)
 
 ![](/assets/slogen.png)
 
